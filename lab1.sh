@@ -1,9 +1,12 @@
 #!/bin/bash
+#1//
 a=1.5
 b=2.5
 c=$(echo "scale=2;$a+ $b"| bc)
 echo $c
 
+
+#2//
 num="3.14"
 if echo "$num" | grep -qE '^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$'; then
     echo "$num is a valid floating point"
@@ -12,7 +15,7 @@ else
 fi
 
 
-
+#3//
 load=$(uptime | awk '{print $10}')
 datetime=$(date '+%Y-%m-%d %H:%M:%S')
 
