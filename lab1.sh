@@ -1,9 +1,9 @@
 #!/bin/bash
 #1//
-a=1.5
-b=2.5
-c=$(echo "scale=2;$a+ $b"| bc)
-echo $c
+num1=1.5
+num2=2.5
+sum=$(echo "scale=2;$num1+ $num2"| bc)
+echo $sum
 
 
 #2//
@@ -16,7 +16,15 @@ fi
 
 
 #3//
-load=$(uptime | awk '{print $10}')
-datetime=$(date '+%Y-%m-%d %H:%M:%S')
+if [[ $(id -u) -ne 0 ]]; then
+    echo "The user not the root!"
+    exit 1
+fi
 
-echo "$datetime $load" >> /var/log/system-load
+while true; do
+    load=$(uptime | awk '{print $10}')
+    datetime=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "$datetime $load" >> /var/log/system-load
+    sleep 60
+done
+
