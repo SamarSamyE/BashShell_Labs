@@ -1,34 +1,31 @@
 source dbops.sh
+CURUSER=""
 function runMenu {
 	echo "Enter option (1-6)"
 local OPT=0
 while [ ${OPT} -ne 6 ]
 do
 echo -e "\t1-Authenitcate"
-echo -e "\t2-Query a student"
-echo -e "\t3-Insert a new student"
-echo -e "\t4-Delete an existing student"
-echo -e "\t5-Update a student info"
-echo -e "\t6-Quit"
-echo -e "Please choose a menu from 1 to 6"
+echo -e "\t2-Query a customer"
+echo -e "\t3-Insert a new customer"
+echo -e "\t4-Delete an existing customer"
+echo -e "\t5-Quit"
+echo -e "Please choose a menu from 1 to 5"
 read OPT
 case "${OPT}" in
 	"1")
 		authenticate
 		;;
 	"2")
-		querystudent
+		query
 		;;
 	"3")
-		insertstudent
+		insertData
 		;;
 	"4")
-		deletestudent
+		delete
 		;;
 	"5")
-		updatestudent
-		;;
-	"6")
 		echo "Bye bye.."
 		;;
 	*)
